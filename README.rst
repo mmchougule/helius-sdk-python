@@ -12,9 +12,6 @@ Overview
     * - tests
       - | |github-actions|
         | |codecov|
-    * - package
-      - | |version| |wheel| |supported-versions| |supported-implementations|
-        | |commits-since|
 .. |docs| image:: https://readthedocs.org/projects/helius-sdk-python/badge/?style=flat
     :target: https://helius-sdk-python.readthedocs.io/
     :alt: Documentation Status
@@ -51,9 +48,7 @@ Overview
 
 .. end-badges
 
-Helius SDK
-
-* Free software: MIT license
+WIP
 
 Installation
 ============
@@ -66,6 +61,22 @@ You can also install the in-development version with::
 
     pip install https://github.com/mmchougule/helius-sdk-python/archive/main.zip
 
+
+
+Examples
+========
+
+Get transaction details
+
+    >>> from helius_sdk.transaction import Transaction
+    >>> t = Transaction(api_key="api_key", tx_address="").get()
+    >>> t.shape
+
+Get nft sales
+
+    >>> from helius_sdk.event import Sale
+    >>> sale = Sale(api_key="api_key", col_address="").get()
+    >>> sale.shape
 
 Documentation
 =============
