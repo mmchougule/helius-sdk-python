@@ -7,9 +7,17 @@ import polars as pl
 
 
 def load_config(config_path="conf/base.yml"):
-    with open(config_path, "r") as config_file:
-        config = yaml.safe_load(config_file)
-    return config["helius"]
+    try:
+        if os.path.exists(config_path):
+            with open(config_path, "r") as config_file:
+                config = yaml.safe_load(config_file)
+            return config["helius"]
+        else:
+            return {
+                "base_url": os.getenv("BASE_URL") or "https://api.helius.xyz/v1",
+                "api_key": os.getenv("API_KEY"),
+            }
+    except Exception as e:
 
 
 CONFIG = load_config()
