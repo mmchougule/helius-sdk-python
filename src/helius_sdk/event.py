@@ -51,26 +51,27 @@ class EventsAPI(HeliusAPI, ABC):
               }
             }
         """
-        super().__init__(api_key)
+        # super().__init__(api_key, )
+        super().__init__(api_key=api_key, slug="nft-events")
         self.sources = sources
         self.col_address = col_address or YOOTS_ADDRESS
-        self.url = f"{self.BASE_URL}/nft-events?api-key={self.api_key}"
+        # self.url = f"{self.BASE_URL}/nft-events?api-key={self.api_key}"
         self.query = query
 
-    def make_request(self, query, df=True):
-        """
-        Make post request to Helius API
-        :param query:
-        :param df:
-        :return:
-        """
-        try:
-            response = requests.post(self.url, json={"query": query})
-            if not df:
-                return response.json()
-            return to_df(response.json())
-        except Exception as e:
-            raise e
+    # def make_request(self, query, df=True):
+    #     """
+    #     Make post request to Helius API
+    #     :param query:
+    #     :param df:
+    #     :return:
+    #     """
+    #     try:
+    #         response = requests.post(self.url, json={"query": query})
+    #         if not df:
+    #             return response.json()
+    #         return to_df(response.json())
+    #     except Exception as e:
+    #         raise e
 
     def get_query(self, qtype: [str], kwargs={}):
         """
@@ -82,7 +83,7 @@ class EventsAPI(HeliusAPI, ABC):
         q = {"types": qtype, "nftCollectionFilters": {"verifiedCollectionAddress": [self.col_address]}, **kwargs}
         if self.sources:
             q["sources"] = self.sources or ["MAGIC_EDEN"]
-        return q
+        return {"query": q}
 
 
 class Sale(EventsAPI):
