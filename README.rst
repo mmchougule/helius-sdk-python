@@ -66,6 +66,8 @@ You can also install the in-development version with::
 Examples
 ========
 
+>>> export API_KEY=YOUR_API_KEY
+
 Get transaction details
 
     >>> from helius_sdk.transaction import Transaction
