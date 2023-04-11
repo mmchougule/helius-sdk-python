@@ -19,7 +19,7 @@ def read(*names, **kwargs):
 
 setup(
     name='helius-sdk',
-    version='0.0.0',
+    version='0.0.11',
     license='MIT',
     description='Helius SDK',
     long_description='{}\n{}'.format(
@@ -66,6 +66,12 @@ setup(
     python_requires='>=3.7',
     install_requires=[
         'click',
+        'requests',
+        'pyyaml',
+        'polars',
+        'pandas',
+        'numpy',
+        'pyarrow',
         # eg: 'aspectlib==1.1.1', 'six>=1.7',
     ],
     extras_require={
